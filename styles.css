@@ -1,0 +1,935 @@
+/* ============================================
+   PASSAGE - Julian Capital Style
+   Warm, peachy aesthetic with serif typography
+   ============================================ */
+
+:root {
+    --font-sans: 'Inter', -apple-system, sans-serif;
+    --font-serif: 'Instrument Serif', Georgia, serif;
+    
+    --bg: #f2d4c4;
+    --bg-dark: #1a1714;
+    --bg-card: #f5ebe0;
+    --text: #0f0f0f;
+    --text-muted: #666;
+    --border: rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg: #0f0f0f;
+    --bg-dark: #000000;
+    --bg-card: #1a1a1a;
+    --text: #f5f5f5;
+    --text-muted: #999;
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+/* Reset */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-sans);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+}
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+button { font-family: inherit; cursor: pointer; border: none; background: none; color: inherit; }
+
+/* ============================================
+   Intro Loader
+   ============================================ */
+.intro {
+    position: fixed;
+    inset: 0;
+    background: var(--bg);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.intro.hidden {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.intro-logo {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    animation: introFade 1.5s ease forwards;
+}
+
+@keyframes introFade {
+    0% { opacity: 0; transform: translateY(20px); }
+    50% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   Navigation
+   ============================================ */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 48px;
+    background: transparent;
+    transition: background 0.3s;
+}
+
+.navbar.scrolled {
+    background: var(--bg);
+}
+
+.nav-logo {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+}
+
+.nav-center {
+    display: flex;
+    gap: 40px;
+}
+
+.nav-center a {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    transition: color 0.2s;
+}
+
+.nav-center a:hover {
+    color: var(--text);
+}
+
+.theme-toggle {
+    font-size: 18px;
+    padding: 8px;
+}
+
+.theme-toggle .sun { display: inline; }
+.theme-toggle .moon { display: none; }
+[data-theme="dark"] .theme-toggle .sun { display: none; }
+[data-theme="dark"] .theme-toggle .moon { display: inline; }
+
+.nav-cta {
+    padding: 12px 24px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    transition: transform 0.2s;
+}
+
+.nav-cta:hover {
+    transform: translateY(-2px);
+}
+
+/* ============================================
+   Hero Section - Julian Capital Style
+   ============================================ */
+.hero {
+    padding: 140px 48px 80px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.hero-kicker {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+}
+
+.hero-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(40px, 6vw, 72px);
+    font-weight: 400;
+    line-height: 1.08;
+    margin-bottom: 64px;
+    max-width: 1100px;
+}
+
+.hero-columns {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+}
+
+.hero-left {
+    display: flex;
+    flex-direction: column;
+}
+
+.hero-founders {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 48px;
+    margin-bottom: 24px;
+}
+
+.founders-dot {
+    width: 8px;
+    height: 8px;
+    background: var(--text);
+    margin-top: 6px;
+    flex-shrink: 0;
+}
+
+.founders-names {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+}
+
+.hero-cta-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 14px 24px;
+    border: 1px solid var(--text);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    transition: background 0.2s, color 0.2s;
+    width: fit-content;
+}
+
+.hero-cta-btn:hover {
+    background: var(--text);
+    color: var(--bg);
+}
+
+.hero-right {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.hero-block h3 {
+    font-family: var(--font-serif);
+    font-size: 28px;
+    font-weight: 400;
+    margin-bottom: 16px;
+}
+
+.hero-block p {
+    font-size: 15px;
+    line-height: 1.75;
+    color: var(--text-muted);
+}
+
+/* Buttons */
+.btn-primary {
+    padding: 14px 28px;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.btn-secondary {
+    padding: 14px 28px;
+    background: transparent;
+    color: var(--text);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    border: 1px solid var(--border);
+    transition: background 0.2s;
+}
+
+.btn-secondary:hover {
+    background: var(--bg-card);
+}
+
+/* ============================================
+   Mission Section
+   ============================================ */
+.mission-section {
+    padding: 120px 48px;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission-title {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 24px;
+}
+
+.mission-title em {
+    font-style: italic;
+}
+
+.mission-subtext {
+    font-size: 18px;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+/* ============================================
+   Founder Section (Julian Capital style)
+   ============================================ */
+.founder-section {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.founder-header {
+    margin-bottom: 64px;
+}
+
+.section-kicker {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.founder-headline {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 4vw, 48px);
+    font-weight: 400;
+    line-height: 1.15;
+}
+
+.founder-headline em {
+    font-style: italic;
+}
+
+.founder-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 64px;
+    align-items: start;
+}
+
+.founder-photo {
+    position: relative;
+    width: 280px;
+    height: 350px;
+    overflow: hidden;
+}
+
+.founder-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.photo-scanlines {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(242, 212, 196, 0.15) 3px,
+        rgba(242, 212, 196, 0.15) 6px
+    );
+}
+
+[data-theme="dark"] .photo-scanlines {
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 3px,
+        rgba(15, 15, 15, 0.15) 3px,
+        rgba(15, 15, 15, 0.15) 6px
+    );
+}
+
+.founder-bio {
+    max-width: 600px;
+}
+
+.founder-name {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.founder-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 24px;
+    text-transform: uppercase;
+}
+
+.founder-para {
+    font-size: 16px;
+    line-height: 1.75;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.founder-para strong {
+    color: var(--text);
+}
+
+.founder-credibility {
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--text-muted);
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+}
+
+.founder-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin: 32px 0;
+}
+
+.founder-lines span {
+    height: 2px;
+    background: var(--text);
+}
+
+.founder-lines span:nth-child(1) { width: 100%; }
+.founder-lines span:nth-child(2) { width: 100%; }
+.founder-lines span:nth-child(3) { width: 100%; }
+.founder-lines span:nth-child(4) { width: 100%; }
+
+.founder-link {
+    font-size: 14px;
+    font-weight: 600;
+    transition: opacity 0.2s;
+}
+
+.founder-link:hover {
+    opacity: 0.7;
+}
+
+/* ============================================
+   Portfolio/How We Help Section
+   ============================================ */
+.portfolio-section {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.portfolio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 48px;
+}
+
+.portfolio-header h2 {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 400;
+}
+
+.portfolio-tags {
+    display: flex;
+    gap: 8px;
+}
+
+.tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    padding: 8px 12px;
+    border: 1px solid var(--border);
+    color: var(--text-muted);
+}
+
+.tag.filled {
+    background: var(--text);
+    color: var(--bg);
+    border-color: var(--text);
+}
+
+.section-title {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 48px;
+}
+
+/* Value Props */
+.value-props {
+    max-width: 400px;
+}
+
+.value-props-wide {
+    max-width: 700px;
+}
+
+.value-prop {
+    display: flex;
+    align-items: baseline;
+    gap: 32px;
+    padding: 16px 0;
+    border-bottom: 1px solid var(--border);
+    transition: padding-left 0.2s;
+    cursor: default;
+}
+
+.value-prop:hover {
+    padding-left: 12px;
+}
+
+.prop-num {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'SF Mono', 'Monaco', monospace;
+    color: var(--text-muted);
+    min-width: 28px;
+}
+
+.prop-text {
+    font-size: 16px;
+}
+
+/* ============================================
+   Case Studies / What We Do
+   ============================================ */
+.case-studies {
+    padding: 80px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.case-header-section {
+    margin-bottom: 48px;
+}
+
+.case-item {
+    border-top: 1px solid var(--border);
+}
+
+.case-item:last-child {
+    border-bottom: 1px solid var(--border);
+}
+
+.case-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 28px 0;
+    cursor: pointer;
+}
+
+.case-left {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.case-num {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.case-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+}
+
+.case-toggle {
+    width: 28px;
+    height: 28px;
+    position: relative;
+}
+
+.case-toggle span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 12px;
+    height: 2px;
+    background: var(--text);
+    transform: translate(-50%, -50%);
+}
+
+.case-toggle span::after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 2px;
+    background: var(--text);
+    transform: rotate(90deg);
+    transition: transform 0.3s;
+}
+
+.case-item.active .case-toggle span::after {
+    transform: rotate(0deg);
+}
+
+.case-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease;
+}
+
+.case-item.active .case-body {
+    max-height: 400px;
+}
+
+.case-content {
+    padding-bottom: 32px;
+}
+
+.case-category {
+    display: block;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.case-title {
+    font-family: var(--font-serif);
+    font-size: 42px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.case-points {
+    list-style: none;
+    margin-bottom: 20px;
+}
+
+.case-points li {
+    font-size: 15px;
+    color: var(--text-muted);
+    padding: 8px 0;
+    padding-left: 20px;
+    position: relative;
+}
+
+.case-points li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 15px;
+    width: 5px;
+    height: 5px;
+    background: var(--text);
+    border-radius: 50%;
+}
+
+.case-link {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+/* ============================================
+   Capabilities Section
+   ============================================ */
+.team-section {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.team-header {
+    margin-bottom: 48px;
+}
+
+.team-header h2 {
+    font-family: var(--font-serif);
+    font-size: 48px;
+    font-weight: 400;
+    margin-bottom: 8px;
+}
+
+.team-subtitle {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.capabilities-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 32px;
+}
+
+.capability-card {
+    padding: 32px;
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    transition: transform 0.2s;
+}
+
+.capability-card:hover {
+    transform: translateY(-4px);
+}
+
+.capability-num {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 16px;
+}
+
+.capability-title {
+    font-family: var(--font-serif);
+    font-size: 24px;
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+.capability-desc {
+    font-size: 14px;
+    line-height: 1.7;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   Essays/Impact Section
+   ============================================ */
+.essays-section {
+    padding: 80px 48px;
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.essays-title {
+    font-family: var(--font-serif);
+    font-size: 36px;
+    font-weight: 400;
+    margin-bottom: 20px;
+}
+
+.essays-body {
+    font-size: 17px;
+    line-height: 1.8;
+    color: var(--text-muted);
+}
+
+/* ============================================
+   CTA Section
+   ============================================ */
+.cta-section {
+    padding: 100px 48px;
+    max-width: 1400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.cta-labels {
+    display: flex;
+    justify-content: space-between;
+    max-width: 800px;
+    margin: 0 auto 16px;
+}
+
+.cta-labels span {
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--text-muted);
+}
+
+.cta-main {
+    position: relative;
+    padding: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.bracket {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--text);
+}
+
+.bracket.tl {
+    top: 0;
+    left: 0;
+    border-right: none;
+    border-bottom: none;
+}
+
+.bracket.tr {
+    top: 0;
+    right: 0;
+    border-left: none;
+    border-bottom: none;
+}
+
+.bracket.bl {
+    bottom: 0;
+    left: 0;
+    border-right: none;
+    border-top: none;
+}
+
+.bracket.br {
+    bottom: 0;
+    right: 0;
+    border-left: none;
+    border-top: none;
+}
+
+.cta-title {
+    font-family: var(--font-serif);
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 400;
+    line-height: 1.1;
+}
+
+.cta-subtext {
+    font-size: 16px;
+    color: var(--text-muted);
+    margin: 24px 0 32px;
+}
+
+.cta-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 48px;
+}
+
+.cta-lines {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin: 20px auto;
+    max-width: 800px;
+}
+
+.cta-lines span {
+    height: 2px;
+    background: var(--text);
+    transform: scaleX(0);
+    transform-origin: left;
+}
+
+.cta-lines span:nth-child(1) { width: 25%; }
+.cta-lines span:nth-child(2) { width: 35%; }
+.cta-lines span:nth-child(3) { width: 45%; }
+.cta-lines span:nth-child(4) { width: 55%; }
+.cta-lines span:nth-child(5) { width: 65%; }
+.cta-lines span:nth-child(6) { width: 75%; }
+.cta-lines span:nth-child(7) { width: 85%; }
+.cta-lines span:nth-child(8) { width: 100%; }
+
+.cta-copyright {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 48px;
+}
+
+/* ============================================
+   Responsive
+   ============================================ */
+@media (max-width: 1024px) {
+    .hero-columns {
+        grid-template-columns: 1fr;
+        gap: 64px;
+    }
+    
+    .hero-right {
+        border-top: 1px solid var(--border);
+        padding-top: 48px;
+    }
+    
+    .founder-content {
+        grid-template-columns: 1fr;
+        gap: 48px;
+    }
+    
+    .founder-photo {
+        width: 220px;
+        height: 280px;
+    }
+    
+    .capabilities-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        padding: 16px 24px;
+    }
+    
+    .nav-center {
+        display: none;
+    }
+    
+    .hero,
+    .mission-section,
+    .founder-section,
+    .portfolio-section,
+    .case-studies,
+    .team-section,
+    .essays-section,
+    .cta-section {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+    
+    .founder-photo {
+        width: 100%;
+        max-width: 280px;
+        height: 320px;
+    }
+    
+    .hero-buttons {
+        flex-direction: column;
+    }
+    
+    .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .cta-labels {
+        flex-direction: column;
+        gap: 8px;
+        align-items: center;
+    }
+}
