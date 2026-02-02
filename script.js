@@ -8,9 +8,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // ============================================
     const intro = document.getElementById('intro');
     
-    setTimeout(() => {
-        intro.classList.add('hidden');
-    }, 2000);
+    if (intro) {
+        setTimeout(() => {
+            intro.classList.add('hidden');
+            // Remove from DOM after transition
+            setTimeout(() => {
+                intro.style.display = 'none';
+            }, 600);
+        }, 1500);
+    }
 
     // ============================================
     // Theme Toggle
